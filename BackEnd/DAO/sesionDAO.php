@@ -12,7 +12,7 @@ require_once __DIR__ . '/../dao/respuesta.php';
 
         public function iniciarSesion($email, $password){
             $conection = getConector();
-            $sql = "SELECT * FROM usuario WHERE email = 'email' AND password = 'password'";
+            $sql = "SELECT * FROM usuario WHERE email = 'email' AND contraseña = 'contraseña'";
             $respuesta = $conection->query($sql);
             $fila = $respuesta->fetch_assoc();
             if ($fila !=null){
