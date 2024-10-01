@@ -10,6 +10,10 @@
         case "registrar":
             registrarUsuario();
         break;
+    
+        case "crear":
+            crearCuenta();
+        break;
     }
     
     function registrarUsuario(){
@@ -24,6 +28,13 @@
         $email = $_POST['email'];
         $password = $_POST['password'];
         $resultado = (new SesionDAO())->iniciarSesion($email, $password);
+        echo json_encode($resultado);
+    }    
+
+    function crearCuenta(){
+        $saldo = $_POST['saldo'];
+        $emailUsuario = $_POST['emailUsuario'];
+        $resultado = (new SesionDAO())->crearCuenta($saldo, $emailUsuario);
         echo json_encode($resultado);
     }
 ?>

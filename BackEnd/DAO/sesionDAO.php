@@ -40,6 +40,21 @@ require_once __DIR__ . '/../dao/respuesta.php';
             }
             
         }
+
+        public function crearCuenta($saldo, $emailUsuario) {
+            try {
+                $conection = getConector();
+                $sql = "INSERT INTO cuenta(saldo, emailUsuario) 
+                        VALUES ('$saldo', '$emailUsuario');";
+                $respuesta = $conection->query($sql);
+               return new Respuesta(true, "cuenta creada correctamente", $respuesta);
+              // return "usuario A";
+            } catch (Exception $e) {
+               return new Respuesta(false, "Error al crear cuenta: " . $e->getMessage(), null);
+                //return "error";
+            }
+            
+        }
     }
 
 
