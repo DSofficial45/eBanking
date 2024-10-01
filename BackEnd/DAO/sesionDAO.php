@@ -12,7 +12,7 @@ require_once __DIR__ . '/../dao/respuesta.php';
 
         public function iniciarSesion($email, $password){
             $conection = getConector();
-            $sql = "SELECT * FROM usuario WHERE email = 'email' AND contraseña = 'contraseña'";
+            $sql = "SELECT * FROM usuario WHERE email = '$email' AND contraseña = '$password'";
             $respuesta = $conection->query($sql);
             $fila = $respuesta->fetch_assoc();
             if ($fila !=null){
@@ -30,7 +30,7 @@ require_once __DIR__ . '/../dao/respuesta.php';
             try {
                 $conection = getConector();
                 $sql = "INSERT INTO usuario(nombreCompleto, email, contraseña) 
-                        VALUES ('$email', '$nombre', '$password');";
+                        VALUES ('$nombre', '$email', '$password');";
                 $respuesta = $conection->query($sql);
                return new Respuesta(true, "Usuario registrado correctamente", $respuesta);
               // return "usuario A";
