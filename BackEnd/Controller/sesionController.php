@@ -23,7 +23,7 @@
     function iniciarSesion(){
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $resultado = (new SesionDAO())->registrarUsuario($email, $password);
+        $resultado = (new SesionDAO())->iniciarSesion($email, $password);
         echo json_encode($resultado);
     }
 ?>
