@@ -29,8 +29,8 @@ require_once __DIR__ . '/../dao/respuesta.php';
         public function registrarUsuario($email, $nombre, $password) {
             try {
                 $conection = getConector();
-                $sql = "INSERT INTO usuario(email, nombre, nombre, password) 
-                        VALUES ('$email', '$nombre', '$nombre', '$password');";
+                $sql = "INSERT INTO usuario(nombreCompleto, email, contraseña) 
+                        VALUES ('$email', '$nombre', '$password');";
                 $respuesta = $conection->query($sql);
                return new Respuesta(true, "Usuario registrado correctamente", $respuesta);
               // return "usuario A";

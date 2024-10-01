@@ -1,7 +1,7 @@
 <?php
 
 function getConector() {
-       $conexion = new mysqli("localhost", "root", "", "ebanking");
+       $conexion = new mysqli("localhost", "root", "", "ebaking");
        return $conexion;
 }
     

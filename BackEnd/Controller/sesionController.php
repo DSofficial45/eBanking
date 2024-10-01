@@ -3,7 +3,7 @@
 
     $funcion = $_GET['funcion'];
     switch ($funcion) {
-        case "login":
+        case "iniciar":
             iniciarSesion();
         break;
     
