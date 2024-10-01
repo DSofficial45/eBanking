@@ -30,7 +30,7 @@ require_once __DIR__ . '/../dao/respuesta.php';
             try {
                 $conection = getConector();
                 $sql = "INSERT INTO usuario(nombreCompleto, email, contraseña) 
-                        VALUES ('$nombre', '$email', '$password');";
+                        VALUES ('$nombre','$email', '$password');";
                 $respuesta = $conection->query($sql);
                return new Respuesta(true, "Usuario registrado correctamente", $respuesta);
               // return "usuario A";
