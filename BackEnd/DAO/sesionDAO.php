@@ -26,13 +26,18 @@ require_once __DIR__ . '/../dao/respuesta.php';
             
         }
 
-        public function registrarUsuario($email, $nombre, $password) {
+        public function registrarUsuario($email, $nombre, $password, $saldo) {
             try {
                 $conection = getConector();
                 $sql = "INSERT INTO usuario(nombreCompleto, email, contraseña) 
                         VALUES ('$nombre','$email', '$password');";
                 $respuesta = $conection->query($sql);
-               return new Respuesta(true, "Usuario registrado correctamente", $respuesta);
+                if ($respuesta){
+                    $this ->crearCuenta($saldo, $email);
+                }
+                
+                
+               
               // return "usuario A";
             } catch (Exception $e) {
                return new Respuesta(false, "Error al registrar Usuario: " . $e->getMessage(), null);
@@ -47,10 +52,16 @@ require_once __DIR__ . '/../dao/respuesta.php';
                 $sql = "INSERT INTO cuenta(saldo, emailUsuario) 
                         VALUES ('$saldo', '$emailUsuario');";
                 $respuesta = $conection->query($sql);
-               return new Respuesta(true, "cuenta creada correctamente", $respuesta);
+              if ($respuesta){
+                return new Respuesta(true, "cuenta creada correctamente", $respuesta);
+              }
+              else{
+
+                return new Respuesta(false, "Error al crear cuenta: " ,$respuesta);
+              }
               // return "usuario A";
             } catch (Exception $e) {
-               return new Respuesta(false, "Error al crear cuenta: " . $e->getMessage(), null);
+            //   return new Respuesta(false, "Error en la operacion: " . $e->getMessage(), null);
                 //return "error";
             }
             

@@ -20,7 +20,8 @@
         $email = $_POST['email'];
         $nombre = $_POST['nombre'];
         $password = $_POST['password'];
-        $resultado = (new SesionDAO())->registrarUsuario($email, $nombre, $password);
+        $saldo = $_POST['saldo'];
+        $resultado = (new SesionDAO())->registrarUsuario($email, $nombre, $password, $saldo);
         echo json_encode($resultado);
     }
 
